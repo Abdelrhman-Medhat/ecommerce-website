@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Website</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section id="header">
+        <a href="index.html">
+            <img src="img/Logo1.png" class="logo" alt="">
+        </a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="signin.html">Log in</a></li>
+                <div id="cart-count">
+                    <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+                    <span class="cart-quantity js-cart-quantity"></span>
+                </div>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+            <span class="cart-quantity js-cart-quantity"></span>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+    <section id="contact-details">
+        <div class="contact">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="contact-details">
+            <div class="inside-right-side">
+                <p><i class="far fa-envelope"></i>Abdelrhman.garoda@gmail.com</p>
+            </div>
+            <div class="inside-right-side">
+                <p><i class="fas fa-phone-alt"></i>+2 01151263296</p>
+            </div>
+        </div>
+    </section>
+    <section id="form-details">
+        <form action="">
+            <span>LEAVE A MESSAGE</span>
+            <input type="text" placeholder="Your Name">
+            <input type="text" placeholder="E-mail">
+            <textarea name="" id="" cols="30" rows="5" placeholder="Your Message"></textarea>
+            <button class="btn-form">Submit</button>
+        </form>
+    </section>
+    <footer class="p1">
+        <div class="col">
+            <h4>Contact</h4>
+            <p><strong>Address: </strong> Cairo,Egypt</p>
+            <p><strong>Phone:</strong> +2 01151263296</p>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="">Delivery Information</a>
+            <a href="">Privacy Policy</a>
+            <a href="">Terms & Conditions</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="">View Cart</a>
+            <a href="">Sign In</a>
+            <a href="">My Wishlist</a>
+            <a href="">Track My Order</a>
+            <a href="">Help</a>
+        </div>
+        <div class="col">
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <a href="https://www.facebook.com/A.MED7AAT/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024, A.M</p>
+        </div>
+    </footer>
+    <script>
+        const bar = document.getElementById('bar');
+        const close = document.getElementById('close');
+        const nav = document.getElementById('navbar');
+
+        if(bar){
+            bar.addEventListener('click', () => {
+                nav.classList.add('active');
+            })
+        };
+
+        if(close){
+            close.addEventListener('click', () => {
+                nav.classList.remove('active');
+            })
+        };
+    </script>
+</body>
+</html>
