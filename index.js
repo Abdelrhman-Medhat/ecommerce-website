@@ -22,9 +22,10 @@ if(close){
 }
 
 
-
 let productsHTML = '';
-NewProducts.forEach((product) => {
+for (let x = 1; x < NewProducts.length; x++) {
+    const product = NewProducts[x];
+    const isInCart = cart.some(item => item.productId === product.id);
     productsHTML += `
         <div class="pro">
             <img src="${product.img}" alt="">
@@ -33,23 +34,25 @@ NewProducts.forEach((product) => {
                 <h5>${product.name}</h5>
                 <div class="star">
                     <img src="./img/ratings/rating-${product.rating.starts * 10}.png">
-                    <h4>
-                    ${product.rating.count}
-                    </h4>
+                    <h4>${product.rating.count}</h4>
                 </div>
                 <h4>$${handleProductPrice(product.price)}</h4>
             </div>
-            <button class="cart js-add-to-cart" data-product-id="${product.id}"><i class="fal fa-shopping-cart"></i></button>
+            <button class="cart js-add-to-cart" data-product-id="${product.id}" ${isInCart ? 'disabled' : ''}>
+                ${isInCart ? 'Added To Cart ✔' : '<i class="fal fa-shopping-cart"></i>'}
+            </button>
         </div>
-    `
-})
+    `;
+}
 
 document.querySelector(".js-products").innerHTML = productsHTML;
 
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (e) => {
         const productId = button.dataset.productId;
         addToCart(productId);
+        e.target.innerHTML = 'Added to cart ✔'
+        e.target.setAttribute('disabled','')
         updateCartQuantity();
     });
 });

@@ -1,4 +1,4 @@
-import { cart, removeFromCart, updateCartQuantity } from "./script/cart.js";
+import { cart, removeFromCart, updateCartQuantity, updateQuantityInStorage } from "./script/cart.js";
 import { NewProducts } from "./script/NewProducts.js";
 import { handleProductPrice } from "./script/utils/money.js";
 
@@ -17,6 +17,14 @@ if(close){
         nav.classList.remove('active');
     })
 };
+
+function handleSelectedProductQunatity(productId, selectedQuantity){
+    let options = "";
+    for (let i = 1; i <= 10; i++) {
+        options += `<option value="${i}" ${i == selectedQuantity ? "selected" : ""}>${i}</option>`;
+    }
+    return `<select class="js-quantity-select" id="${productId}">${options}</select>`;
+}
 
 let cartSummaryHTML = '';
 updateCartQuantity();
@@ -40,7 +48,7 @@ cart.forEach((cartItem) => {
                     <div class="product-details">
                         <p>${matchingProduct.name}</p>
                         <label>Quantity:</label>
-                        <input class="js-quantity-input" id="${matchingProduct.id}" type="number" value="${cartItem.quantity}" min="1" max="10"/>
+                        ${handleSelectedProductQunatity(matchingProduct.id,cartItem.quantity)}
                     </div>
                     <div class="product-price">
                         <h2>price:</h2>
@@ -58,7 +66,7 @@ document.querySelector(".cartitem").innerHTML = cartSummaryHTML;
 handleCartTotal();
 handleCartSubTotal();
 
-document.querySelectorAll(".js-quantity-input").forEach((e) => {
+document.querySelectorAll(".js-quantity-select").forEach((e) => {
     e.addEventListener("change", (x) => {
         let productId = x.target.id;
         let productValue = x.target.value;
@@ -67,6 +75,7 @@ document.querySelectorAll(".js-quantity-input").forEach((e) => {
         document.querySelector(`.p-p${productId}`).innerHTML = handleProductPrice(document.querySelector(`.quan-${productId}`).innerHTML * productPrice);
         handleCartTotal();
         handleCartSubTotal();
+        updateQuantityInStorage(productId,productValue);
     })
 })
 
