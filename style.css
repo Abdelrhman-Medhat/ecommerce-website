@@ -129,6 +129,11 @@ body{
     color: #000000;
     margin-top: 5px;
 }
+#product1 .pro button:disabled {
+    opacity: 0.8;
+    background-color: gray !important;
+    cursor: not-allowed !important;
+}
 #product1 .pro .cart:hover{
     background-color: #b3f765;
     cursor: pointer;
@@ -463,6 +468,9 @@ footer .copyright{
     border-radius: 15px;
     cursor: pointer;
     align-self: center;
+}
+.item select {
+    font-size: 20px;
 }
 .item-hr{
     display: flex;
